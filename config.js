@@ -43,7 +43,7 @@ global.apikey = 'ItsukiNakanoIA'
 global.botNumber = '18482389332'
 // Números y settings globales para varios códigos
 global.packname = 'La Mejor Bot De WhatsApp'
-global.botname = '*☃️ 𝙄𝙩𝙨𝙪𝙠𝙞 𝙉𝙖𝙠𝙖𝙣𝙤 𝙉𝙚𝙬 𝙐𝙥 ❄️*'
+global.botname = '☃️ 𝙄𝙩𝙨𝙪𝙠𝙞 𝙉𝙖𝙠𝙖𝙣𝙤 𝙉𝙚𝙬 𝙐𝙥 ❄️'
 global.wm = '© 𝐋𝐞𝐨  𝐗𝐬𝐳𝐲'
 global.wm3 = '⫹⫺  multi-device'
 global.author = 'made by @Leo Xzsy'
