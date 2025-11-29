@@ -17,9 +17,9 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     let neww = performance.now()
     let speed = (neww - old).toFixed(4)
 
-    let menuText = `> 👋🏻 .ৎ˚₊‧  Hola, @${m.sender.split('@')[0]} *Pasa Feliz Navidad ❄️*.
+    let menuText = `> 👋🏻 .ৎ˚₊‧  *Hola*, @${m.sender.split('@')[0]} *Pasa Feliz Navidad ❄️*.
 
->  ִ \`I N F O - B O T\` ! ୧ ֹ 
+ ִ \`I N F O - B O T\` ! ୧ ֹ 
    
 > ੭੭﹙❐﹚ \`bot :\` *soy ItsukiV3*
 > ੭੭﹙❐﹚ \`Ping :\` *${speed} ms*
