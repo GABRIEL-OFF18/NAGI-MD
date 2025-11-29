@@ -26,89 +26,68 @@ async function makeFkontak() {
   }
 }
 
-const handler = async (m, { conn, text, participants, parseUserTargets, getUserInfo, isAdmin, isBotAdmin }) => {
+const handler = async (m, { conn, text, participants, isAdmin, isBotAdmin }) => {
   try {
-    if (!m.isGroup) throw new Error('Este comando solo funciona en grupos.')
+    if (!m.isGroup) return
+    
+    // Verificar permisos primero
+    if (!isBotAdmin) return
+    if (!isAdmin) return
 
-    if (!m.mentionedJid?.length && !m.quoted && !text?.trim()) {
-      const ctxInfo = (global.rcanal || {})
-      return conn.reply(m.chat, `
-🛠️ ǫᴜɪᴛᴀʀ ᴀᴅᴍɪɴ (ᴅᴇᴍᴏᴛᴇ)
-
-ᴜsᴏ:
-• ᴅᴇᴍᴏᴛᴇ @ᴜsᴜᴀʀɪᴏ – ᴍᴇɴᴄɪᴏɴᴀʀ ᴜsᴜᴀʀɪᴏ ᴏ 
-• ᴅᴇᴍᴏᴛᴇ (ʀᴇsᴘᴏɴᴅᴇʀ ᴍᴇɴsᴀᴊᴇ) – ᴛᴀʀɢᴇᴛ ᴅᴇʟ ᴍᴇɴsᴀᴊᴇ ᴄɪᴛᴀᴅᴏ
-
-      `, m, ctxInfo)
-    }
-
-  const ctxErr = (global.rcanalx || {})
-  const ctxOk = (global.rcanalr || {})
-  if (!isBotAdmin) return conn.reply(m.chat, '❌ Necesito admin para quitar admin.', m, ctxErr)
-  if (!isAdmin) return conn.reply(m.chat, '❌ Debes ser admin para usar este comando.', m, ctxErr)
-
-  let targets = await parseUserTargets(m, text, participants, conn)
-  if (Array.isArray(targets) && targets.length > 1) targets = [targets[0]]
-    if (!targets.length) {
-      return conn.reply(m.chat, '❌ No se encontraron usuarios válidos para procesar.', m, ctxErr)
-    }
-
-    const results = []
-    for (const t of targets) {
-      const info = await getUserInfo(t, participants, conn)
-      results.push(info)
-    }
-
-    const fkontak = await makeFkontak().catch(() => null)
-
-    const lines = []
-    const mentionJids = []
-
-    for (const user of results) {
-      const badges = []
-      if (user.isSuperAdmin) badges.push('Creador')
-      else if (user.isAdmin) badges.push('ADMIN')
-      else if (user.exists) badges.push('MIEMBRO')
-      if (!user.exists) badges.push('NO EN GRUPO')
-
-      let status = '⏭️ Sin cambios'
-
-      if (!user.exists) {
-        status = '⚠️ No pertenece al grupo'
-      } else if (user.isSuperAdmin) {
-        status = '🚫 No puedo quitar admin al creador'
-      } else if (!user.isAdmin) {
-        status = 'ℹ️ Ya no es admin'
-      } else {
-        try {
-          await conn.groupParticipantsUpdate(m.chat, [user.jid], 'demote')
-          status = `${global.emoji2} Ahora es Miembro`
-        } catch (e) {
-          status = '❌ Error: ' + (e?.message || 'No se pudo')
-        }
+    // Obtener usuario target
+    let targetUser = null
+    if (m.mentionedJid && m.mentionedJid.length > 0) {
+      targetUser = m.mentionedJid[0]
+    } else if (m.quoted) {
+      targetUser = m.quoted.sender
+    } else if (text) {
+      // Buscar por número en el grupo
+      const number = text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
+      if (participants.some(p => p.id === number)) {
+        targetUser = number
       }
-
-      lines.push(`• ${user.name} (@${user.number})\n   🏷️ ${badges.join(', ') || '—'}\n   ${status}`)
-      mentionJids.push(user.jid)
     }
 
-    const summary = `*🧰 Demote ejecutado*\n\n${lines.join('\n\n')}`
+    if (!targetUser) return
+
+    // Verificar que el target está en el grupo
+    const userInGroup = participants.find(p => p.id === targetUser)
+    if (!userInGroup) return
+
+    // No permitir quitar admin al creador
+    if (userInGroup.admin === 'superadmin') return
+
+    // Verificar si ya no es admin
+    if (userInGroup.admin !== 'admin') return
+
+    await m.react('⏳')
 
     try {
-      const optsOk = { ...(ctxOk || {}), mentions: mentionJids }
-      await conn.reply(m.chat, summary, fkontak || m, optsOk)
-    } catch {
-      const optsErr = { ...(ctxErr || {}), mentions: mentionJids }
-      await conn.reply(m.chat, summary, fkontak || m, optsErr)
+      // Quitar admin
+      await conn.groupParticipantsUpdate(m.chat, [targetUser], 'demote')
+      
+      await m.react('✅')
+      
+      // Enviar confirmación
+      const fkontak = await makeFkontak()
+      await conn.reply(m.chat, 
+        `> ⓘ \`Admin removido correctamente\`\n> ⓘ \`Usuario:\` *@${targetUser.split('@')[0]}*`, 
+        fkontak || m, 
+        { mentions: [targetUser] }
+      )
+      
+    } catch (error) {
+      await m.react('❌')
+      console.error('Error en demote:', error)
     }
 
   } catch (error) {
-    console.error('Error en admin-demote:', error)
-    conn.reply(m.chat, '❌ Error al ejecutar demote: ' + error.message, m, (global.rcanalx || {}))
+    await m.react('❌')
+    console.error('Error general en demote:', error)
   }
 }
 
-handler.help = ['demote', 'degradar', 'quitaradmin']
+handler.help = ['demote']
 handler.tags = ['group']
 handler.command = /^(demote|degradar|quitaradmin)$/i
 handler.group = true
@@ -116,4 +95,3 @@ handler.admin = true
 handler.botAdmin = true
 
 export default handler
-
