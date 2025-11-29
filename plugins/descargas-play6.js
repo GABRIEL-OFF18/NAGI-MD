@@ -21,7 +21,7 @@ async function makeFkontak() {
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   const quotedContact = await makeFkontak()
-  if (!text) return conn.reply(m.chat, '*`🧶 Ingresa el nombre o enlace de YouTube/Spotify`*', quotedContact || m)
+  if (!text) return conn.reply(m.chat, '> *`🌱 Ingresa el nombre o enlace de YouTube/Spotify`*', quotedContact || m)
   await m.react('🕓')
   try {
     async function createImage(url) {
@@ -118,15 +118,15 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     let ago = firstYoutube?.ago || '-'
     let timestamp = firstYoutube?.timestamp || '-'
     let views = firstYoutube?.views || 0
-    let details = `> *\`TÍTULO:\`* ${title}\n> *\`SUBIDO:\`* ${ago}\n> *\`DURACIÓN:\`* ${timestamp}\n> *\`VISTAS:\`* ${Number(views).toLocaleString()}`
+    let details = `> 🏷️ *\`TÍTULO:\`* ${title}\n> 📆 *\`SUBIDO:\`* ${ago}\n> 🕛 *\`DURACIÓN:\`* ${timestamp}\n> 👀 *\`VISTAS:\`* ${Number(views).toLocaleString()}`
 
     let bodyText = details
 
     let quickButtons = []
     if (firstYoutube) {
       quickButtons = [
-        { name: 'quick_reply', buttonParamsJson: JSON.stringify({ display_text: '🐼  ꛁ𐑼 ʏᴏᴛᴜʙᴇ ᴍᴘ3', id: `${usedPrefix}ytmp3 ${firstYoutube.url}` }) },
-        { name: 'quick_reply', buttonParamsJson: JSON.stringify({ display_text: '🧸  ꛁ𐑼 ʏᴏᴜᴛᴜʙᴇ ᴍᴘ4', id: `${usedPrefix}ytmp4 ${firstYoutube.url}` }) },
+        { name: 'quick_reply', buttonParamsJson: JSON.stringify({ display_text: '🎧  ꛁ𐑼 ʏᴏᴛᴜʙᴇ ᴘʟᴀʏ-ᴀᴜᴅɪᴏ', id: `${usedPrefix}ytmp3 ${firstYoutube.url}` }) },
+        { name: 'quick_reply', buttonParamsJson: JSON.stringify({ display_text: '🎬  ꛁ𐑼 ʏᴏᴜᴛᴜʙᴇ ᴘʟᴀʏ-ᴠɪᴅᴇᴏ', id: `${usedPrefix}ytmp4 ${firstYoutube.url}` }) },
       ]
     }
 
@@ -145,7 +145,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         ? [{
             name: 'single_select',
             buttonParamsJson: JSON.stringify({
-              title: '  ׅ  ׁ  ׅ  🎧^ֹ᪲᪲  ׁ  ׅ Spotify ʟɪsᴛ',
+              title: '  ׅ  ׁ  ׅ  🎧^ֹ᪲᪲  ׁ  ׅ sᴘᴏᴛɪғʏ ʟɪsᴛ',
               sections: songSections
             })
           }]
@@ -191,9 +191,8 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 }
 
-handler.help = ['play']
-handler.tags = ['dl']
-handler.command = ['play8', 'play9']
-handler.register = true
+handler.help = ['play10, 'play11']
+handler.tags = ['downloader']
+handler.command = ['play10', 'play11']
 
 export default handler
