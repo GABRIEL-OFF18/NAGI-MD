@@ -96,7 +96,7 @@ const handler = async (m, { conn, args, usedPrefix, command }) => {
 
 handler.help = ['hd']
 handler.tags = ['tools']
-handler.command = /^(hd|upscale|enhance|iloveimg)$/i
+handler.command = ['hd'];
 
 export default handler
 
