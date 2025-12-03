@@ -22,6 +22,9 @@
 
 </div>
 
+<details>
+<summary><b>✐ IᑎՏTᗩᒪᗩᑕIOᑎ ᗪᗴᒪ ᗷOT 🤖</b></summary>
+
 ### **`𝗧𝗼𝗰𝗮 𝗟𝗮 𝗜𝗺𝗮𝗴𝗲𝗻 𝗣𝗮𝗿𝗮 𝗗𝗲𝘀𝗰𝗮𝗿𝗴𝗮𝗿 𝗧𝗲𝗿𝗺𝘂𝘅 𝗔𝗰𝘁𝘂𝗮𝗹𝗶𝘇𝗮𝗱𝗼⚙️`**
 <a
 href="https://www.mediafire.com/file/wkinzgpb0tdx5qh/com.termux_1022.apk/file"><img src="https://qu.ax/uYEOh.jpg" height="125px"></a> 
@@ -44,6 +47,7 @@ npm install
 ```bash
 npm start
 ```
+</details>
 
 ### **`ʟᴇᴏ ᴘʀᴏᴘɪᴇᴛᴀʀɪᴏ ᴅᴇʟ ᴘʀᴏʏᴇᴄᴛᴏ`**
 <a
