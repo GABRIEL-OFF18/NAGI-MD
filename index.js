@@ -12,7 +12,7 @@ import { useMultiFileAuthState, DisconnectReason, fetchLatestBaileysVersion, Bro
 import { makeWASocket, protoType, serialize } from './lib/simple.js'
 import config from './config.js'
 // IMPORTACIÓN CORREGIDA - Ahora importamos del handler.js
-// import handlerModule from './handler.js'
+import handlerModule from './handler.js'
 import { loadDatabase, saveDatabase, DB_PATH } from './lib/db.js'
 import { watchFile } from 'fs'
 import dotenv from 'dotenv'
