@@ -22,12 +22,12 @@
 # 🍒 **ItsukiBot - Versión V3**  
 ## *¡Asombroso con nuevas opciones!*  
 
-## [🟢 **CLIC AQUÍ PARA VER NOVEDADES**](#𝗡𝗼𝘃𝗲𝗱𝗮𝗱𝗲𝘀-𝗡𝗲𝘄 🗞️)
+## [🟢 **CLIC AQUÍ PARA VER NOVEDADES**](#NewUpdate)
 *(Toca el botón para ver todas las novedades de Itsuki V3)*
 
 ---
 
-<div id="𝗡𝗼𝘃𝗲𝗱𝗮𝗱𝗲𝘀-𝗡𝗲𝘄 🗞️">
+<div id="NewUpdate">
 
 ## 🚀 **𝙉𝙤𝙫𝙚𝙙𝙖𝙙𝙚𝙨 𝙋𝙧𝙞𝙣𝙘𝙞𝙥𝙖𝙡𝙚𝙨**  
 ### 🌟 **𝙎𝙞𝙨𝙩𝙚𝙢𝙖 𝙙𝙚 𝙀𝙘𝙤𝙣𝙤𝙢í𝙖 𝙈𝙚𝙟𝙤𝙧𝙖𝙙𝙤**    
