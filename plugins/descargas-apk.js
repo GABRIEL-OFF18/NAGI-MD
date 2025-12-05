@@ -113,9 +113,9 @@ await conn.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
 }
 }
 
-handler.help = ['apk2']
+handler.help = ['apk']
 handler.tags = ['downloader']
-handler.command = ['apk2', 'apkdl', 'descargarapk']
+handler.command = ['apk', 'apkdl', 'descargarapk']
 handler.register = false
 
 export default handler
