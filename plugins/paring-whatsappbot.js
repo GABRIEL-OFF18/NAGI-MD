@@ -35,9 +35,9 @@ function dhms(ms) {
   const message = users.map((v, index) => `
     🍃 \`𝗜𝗧𝗦𝗨𝗞𝗜-𝗦𝗜𝗦𝗧𝗘𝗠 | 𝗕𝗢𝗧 𝗟𝗜𝗦𝗧 : ${index + 1}\`
 
-> 🌱 \`ᴜsᴇʀ :\` @${v.user.jid.replace(/[^0-9]/g, '')}
-> ✐ \`ɴᴏᴍʙʀᴇ: ${v.user.name || 'Desconocido'}\`
-> ⏳️ \`ᴜᴘᴛɪᴍᴇ: ${v.uptime ? dhms(Date.now() - v.uptime) : "Desconocido"}\`
+> 🌱 \`ᴜsᴇʀ :\` +${v.user.jid.replace(/[^0-9]/g, '')}
+> ✐ \`ɴᴏᴍʙʀᴇ: ${v.user.name || 'itsuki-sub'}\`
+> 🕑 \`ᴜᴘᴛɪᴍᴇ: ${v.uptime ? dhms(Date.now() - v.uptime) : "Desconocido"}\`
 `).join('\n┈──────────────── ꒰ 🌟 ꒱\n');
 let warn = `
     乂 INFO :
