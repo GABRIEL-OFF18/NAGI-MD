@@ -35,11 +35,11 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
         tempVideoPath = path.join(tempDir, `brat_video_${Date.now()}.mp4`);
         tempStickerPath = path.join(tempDir, `brat_sticker_${Date.now()}.webp`);
 
-        const mayApiUrl = `https://mayapi.ooguy.com/bratvideo`;
+        const mayApiUrl = `https://mayapi.ooguy.com/brat`;
         
-        const fallbackApiUrl = `https://api.siputzx.my.id/api/m/bratvideo?text=${encodeURIComponent(text)}`;
+        const fallbackApiUrl = `https://api.siputzx.my.id/api/m/brat?text=${encodeURIComponent(text)}`;
 
-        let videoData;
+        let imageData;
         let apiUsed = "MayAPI";
 
         try {
@@ -47,7 +47,7 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
                 method: 'GET',
                 url: mayApiUrl,
                 params: {
-                    apikey: 'may-051b5d3d',
+                    apikey: 'may-f53d1d49',
                     text: text
                 },
                 timeout: 15000,
@@ -65,32 +65,42 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
                 throw new Error(`Error en API: ${apiResponse.data.message || 'Estado falso'}`);
             }
 
-            let videoUrl;
-            if (typeof apiResponse.data.result === 'string') {
-                videoUrl = apiResponse.data.result;
-            } else if (apiResponse.data.result && apiResponse.data.result.url) {
-                videoUrl = apiResponse.data.result.url;
-            } else if (apiResponse.data.url) {
-                videoUrl = apiResponse.data.url;
-            } else {
-                throw new Error('No se encontró URL de video en la respuesta');
+            if (!apiResponse.data.result || !apiResponse.data.result.url) {
+                throw new Error('No se encontró URL de imagen en la respuesta');
             }
 
-            const videoResponse = await axios({
+            const imageUrl = apiResponse.data.result.url;
+
+            const imageResponse = await axios({
                 method: 'GET',
-                url: videoUrl,
+                url: imageUrl,
                 responseType: 'arraybuffer',
                 timeout: 20000,
                 headers: {
                     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-                    'Accept': '*/*'
+                    'Accept': 'image/webp,image/png,image/jpeg,*/*'
                 }
             });
 
-            videoData = Buffer.from(videoResponse.data);
+            imageData = Buffer.from(imageResponse.data);
 
-            if (!videoData || videoData.length < 100) {
-                throw new Error('Video descargado es inválido o muy pequeño');
+            const buffer = imageData;
+            const isWebP = buffer.slice(0, 4).toString() === 'RIFF' && buffer.slice(8, 12).toString() === 'WEBP';
+            const isPNG = buffer.slice(0, 8).toString('hex') === '89504e470d0a1a0a';
+            const isJPEG = buffer.slice(0, 3).toString('hex') === 'ffd8ff';
+            
+            if (!isWebP && !isPNG && !isJPEG) {
+                throw new Error('La URL no devolvió una imagen válida');
+            }
+
+            if (isWebP) {
+                fs.writeFileSync(tempStickerPath, buffer);
+            } else {
+                const ffmpegCommand = `ffmpeg -i pipe:0 -vcodec libwebp -lossless 0 -compression_level 3 -qscale 50 -loop 0 -preset default -an -vsync 0 -s 512:512 "${tempStickerPath}" -y`;
+                const { stderr } = await execAsync(`echo "${buffer.toString('base64')}" | base64 -d | ${ffmpegCommand}`, { 
+                    timeout: 30000,
+                    shell: '/bin/bash'
+                });
             }
 
         } catch (primaryError) {
@@ -103,45 +113,27 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
                     maxRedirects: 5,
                     headers: {
                         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-                        'Accept': 'video/*,*/*'
+                        'Accept': 'image/webp,image/*,*/*'
                     }
                 });
 
-                videoData = Buffer.from(fallbackResponse.data);
-                apiUsed = "API Secundaria";
-
-                if (!videoData || videoData.length < 100) {
-                    throw new Error('Video de API secundaria inválido');
+                const fallbackBuffer = Buffer.from(fallbackResponse.data);
+                const isFallbackWebP = fallbackBuffer.slice(0, 4).toString() === 'RIFF' && fallbackBuffer.slice(8, 12).toString() === 'WEBP';
+                
+                if (isFallbackWebP) {
+                    fs.writeFileSync(tempStickerPath, fallbackBuffer);
+                } else {
+                    const ffmpegCommand = `ffmpeg -i pipe:0 -vcodec libwebp -lossless 0 -compression_level 3 -qscale 50 -loop 0 -preset default -an -vsync 0 -s 512:512 "${tempStickerPath}" -y`;
+                    const { stderr } = await execAsync(`echo "${fallbackBuffer.toString('base64')}" | base64 -d | ${ffmpegCommand}`, { 
+                        timeout: 30000,
+                        shell: '/bin/bash'
+                    });
                 }
+
+                apiUsed = "API Secundaria";
 
             } catch (fallbackError) {
                 throw new Error(`Ambas APIs fallaron`);
-            }
-        }
-
-        fs.writeFileSync(tempVideoPath, videoData);
-
-        const fileBuffer = fs.readFileSync(tempVideoPath);
-        const isWebP = fileBuffer.slice(0, 4).toString() === 'RIFF' && fileBuffer.slice(8, 12).toString() === 'WEBP';
-        
-        if (isWebP) {
-            fs.writeFileSync(tempStickerPath, fileBuffer);
-        } else {
-            try {
-                const ffmpegCommand = `ffmpeg -i "${tempVideoPath}" -vcodec libwebp -filter:v fps=fps=20 -lossless 0 -compression_level 3 -qscale 50 -loop 0 -preset default -an -vsync 0 -s 512:512 "${tempStickerPath}" -y`;
-                await execAsync(ffmpegCommand, { timeout: 30000 });
-            } catch (conversionError) {
-                await conn.sendMessage(m.chat, {
-                    video: videoData
-                }, { quoted: m });
-                
-                setTimeout(() => {
-                    try {
-                        if (fs.existsSync(tempVideoPath)) fs.unlinkSync(tempVideoPath);
-                    } catch (e) {}
-                }, 30000);
-                
-                return;
             }
         }
 
@@ -158,8 +150,8 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
 
         setTimeout(() => {
             try {
-                if (fs.existsSync(tempVideoPath)) fs.unlinkSync(tempVideoPath);
-                if (fs.existsSync(tempStickerPath)) fs.unlinkSync(tempStickerPath);
+                if (tempVideoPath && fs.existsSync(tempVideoPath)) fs.unlinkSync(tempVideoPath);
+                if (tempStickerPath && fs.existsSync(tempStickerPath)) fs.unlinkSync(tempStickerPath);
             } catch (e) {}
         }, 30000);
 
@@ -186,7 +178,7 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
         } else if (error.request) {
             errorMessage += '> `📝 No se pudo conectar con el servicio.`';
         } else if (error.message.includes('ffmpeg')) {
-            errorMessage += '> `📝 Error al procesar el video.`';
+            errorMessage += '> `📝 Error al procesar la imagen.`';
         } else {
             errorMessage += '> `📝 ' + error.message + '`';
         }
