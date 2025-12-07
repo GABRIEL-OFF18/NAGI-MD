@@ -463,17 +463,20 @@ if (chat?.adminmode && !isAdmin && !isROwner) {
 
 const isBotAdmin = botGroup?.admin || false
 
-// --- INICIO DE LA SECCIÓN CORREGIDA ---
+// --- INICIO DE LA SECCIÓN CORREGIDA Y A PRUEBA DE FALLOS ---
 // Lógica para evitar que los sub-bots respondan si el modo exclusivo está activado
+
+// Comparamos el JID del bot actual con el JID del bot principal (si está disponible).
+// Usamos Optional Chaining (?.) para evitar errores si global.conn o global.conn.user no existen.
 const isMainBot = this.user.jid === global.conn?.user?.jid;
 
-// Si el chat está en modo exclusivo y el bot actual NO es el principal, se detiene la ejecución.
+// Si el chat está en modo exclusivo Y el bot actual NO es el principal, se detiene la ejecución.
 if (chat?.onlyMainBot && !isMainBot) {
     // Opcional: puedes agregar un log para saber cuándo se bloquea un sub-bot
-    // console.log(`[Modo Exclusivo] Sub-bot ${this.user.jid} bloqueado en ${m.chat}`);
+    // console.log(`[Modo Exclusivo] Sub-bot ${this.user.jid} bloqueado en ${m.chat}.`);
     return; // Detiene la ejecución del handler para este bot
 }
-// --- FIN DE LA SECCIÓN CORREGIDA ---
+// --- FIN DE LA SECCIÓN CORREGIDA Y A PRUEBA DE FALLOS ---
 
 const ___dirname = path.join(path.dirname(fileURLToPath(import.meta.url)), "./plugins")
 for (const name in global.plugins) {
