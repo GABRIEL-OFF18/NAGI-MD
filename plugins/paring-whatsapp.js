@@ -127,10 +127,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
             // Emoji cuando se genera el código
             await conn.sendMessage(m.chat, { react: { text: '✅️', key: m.key } })
 
-            // Formatear el código con guiones (XXXX-XXXX)
-            const formattedCode = rawCode.match(/.{1,4}/g)?.join("-") || rawCode
-
-            // Sistema de botones interactivo
+            // SISTEMA DE BOTÓN QUE FUNCIONA (tomado del otro código)
             const interactiveButtons = [{
               name: "cta_copy",
               buttonParamsJson: JSON.stringify({
@@ -140,29 +137,21 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
               })
             }];
 
-            // Usar tu imagen
-            const imageUrl = 'https://cdn.russellxz.click/73109d7e.jpg'
+            // Formatear el código con guiones
+            const formattedCode = rawCode.match(/.{1,4}/g)?.join("-") || rawCode
 
-            // Enviar mensaje interactivo con botón SIN BARRAS
-            await conn.sendMessage(m.chat, {
-              image: { url: imageUrl },
-              caption: `🔐 *CÓDIGO DE VINCULACIÓN*
-
-📱 *Instrucciones:*
-1. Abre WhatsApp en tu teléfono
-2. Ve a Ajustes → Dispositivos vinculados  
-3. Toca Vincular un dispositivo
-4. Usa este código:
-
-🔢 *Código:* ${formattedCode}
-
-⚠️ *El código expira en 45 segundos*
-
-📌 Pulsa el botón de abajo para copiar el código automáticamente`,
-              footer: "Haz clic en 'Copiar Código' para copiarlo fácilmente",
+            // ENVIAR MENSAJE CON IMAGEN Y BOTÓN (estructura funcional)
+            const interactiveMessage = {
+              image: { url: "https://cdn.russellxz.click/73109d7e.jpg" },
+              caption: `🔐 *CÓDIGO DE VINCULACIÓN*\n\n📱 *Instrucciones:*\n1. Abre WhatsApp en tu teléfono\n2. Ve a Ajustes → Dispositivos vinculados\n3. Toca Vincular un dispositivo\n4. Usa este código:\n\n🔢 *Código:* ${formattedCode}\n\n⚠️ *El código expira en 45 segundos*\n\n📌 Haz clic en el botón de abajo para copiar el código automáticamente.`,
+              footer: "Presiona 'Copiar Código' para copiarlo fácilmente",
               templateButtons: interactiveButtons,
               viewOnce: false
-            }, { quoted: m })
+            };
+
+            await conn.sendMessage(m.chat, interactiveMessage, { quoted: m });
+
+            console.log(`Código de vinculación enviado: ${rawCode}`);
 
             // También enviar el código en texto para referencia
             await conn.reply(m.chat, 
