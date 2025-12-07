@@ -6,7 +6,7 @@ import fs, { unwatchFile, watchFile } from "fs"
 import chalk from "chalk"
 import fetch from "node-fetch"
 import ws from "ws"
-import { startSubBot } from './plugins/_paring-whatsapp.js' 
+import { startSubBot } from './plugins/paring-whatsapp.js' 
 
 
 const { proto } = (await import("@whiskeysockets/baileys")).default
