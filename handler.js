@@ -6,7 +6,8 @@ import fs, { unwatchFile, watchFile } from "fs"
 import chalk from "chalk"
 import fetch from "node-fetch"
 import ws from "ws"
-import { startSubBot } from './paring-whatsapp.js' 
+import { startSubBot } from './plugins/_paring-whatsapp.js' 
+
 
 const { proto } = (await import("@whiskeysockets/baileys")).default
 const isNumber = x => typeof x === "number" && !isNaN(x)
@@ -20,8 +21,6 @@ const globalPrefixes = [
   '-', '_', '+', '=', '|', '\\', '/', '~',
   '>', '<', '^', '?', ':', ';'
 ]
-
-// [Resto de las funciones auxiliares detectPrefix, paisesCodigos, etc. - SE MANTIENEN IGUAL]
 
 const detectPrefix = (text, customPrefix = null) => {
   if (!text || typeof text !== 'string') return null
@@ -274,7 +273,8 @@ if (!("jadibotmd" in settings)) settings.jadibotmd = true
 } else global.db.data.settings[this.user.jid] = {
 self: false,
 jadibotmd: true
-}} catch (e) {
+}
+} catch (e) {
 console.error(e)
 }
 if (typeof m.text !== "string") m.text = ""
