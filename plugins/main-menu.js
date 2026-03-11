@@ -146,5 +146,6 @@ async function getUptime() {
 handler.help = ['menu','help']
 handler.tags = ['main']
 handler.command = ['nilou', 'menu', 'help']
+handler.register = true
 
 export default handler
