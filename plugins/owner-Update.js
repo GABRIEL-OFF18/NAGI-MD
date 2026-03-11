@@ -32,7 +32,7 @@ let handler = async (m, { conn, args }) => {
     const isUpToDate = lower.includes('already up to date') || lower.includes('up to date')
     let response
     if (isUpToDate) {
-      response = `> ⓘ *¡Itsuki ya está actualizada!*\n\n> ⓘ *El bot está al día con las últimas mejoras*`
+      response = `> ⓘ *¡Nilou  ya está actualizada!*\n\n> ⓘ *la bot está al día con las últimas mejoras*`
       await m.react('✅')
     } else {
       const changed = []
@@ -49,7 +49,7 @@ let handler = async (m, { conn, args }) => {
         ''
       ]
       const list = changed.slice(0, 10).map(f => `> ⓘ ${f}`).join('\n') || '> ⓘ *Todos los archivos actualizados*'
-      response = `${banner.join('\n')}\n${list}\n\n> ⓘ *¡Itsuki está lista!*`
+      response = `${banner.join('\n')}\n${list}\n\n> ⓘ *¡Nilou está lista!*`
       await m.react('✅')
     }
 
