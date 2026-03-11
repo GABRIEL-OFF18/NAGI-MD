@@ -99,8 +99,8 @@ let handler = async (m, { conn, usedPrefix, command, isOwner, isROwner }) => {
 > 🔰 Estado: ✅ Conectado al servidor
 > 💾 Servicios: 🟢 Todos operativos
 
-> 🎅 *¡Itsuki V3 está listo para ayudarte de nuevo!*
-> 🎄 *¡Feliz Navidad!* 🎁`.slice(0, 3500),
+> 🌾 *¡Nilou V2 está listo para ayudarte de nuevo!*
+> 🌾 *¡2025-2026!* ☘️`.slice(0, 3500),
       m
     )
   } catch {}
