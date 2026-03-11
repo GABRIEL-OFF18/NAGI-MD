@@ -30,4 +30,6 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 handler.command = ['wpgroups']
 handler.tags = ['buscador']
 handler.help = ['wpgroups']
+handler.register = true
 export default handler
+
