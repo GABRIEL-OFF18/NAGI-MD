@@ -13,7 +13,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     let name2 = conn.getName(m.sender)
 
     let str = m.mentionedJid.length > 0 || m.quoted 
-        ? `🩷 \`${name2}\` le dio un tierno beso virtual a \`${name || who}\` como en el mundo mágico de  Itsuki Nakano ` 
+        ? `🩷 \`${name2}\` le dio un tierno beso virtual a \`${name || who}\` como en el mundo mágico de  Nilou-cham ` 
         : `🩷 \`${name2}\` se envió amor a sí mismo/a en el concierto virtual 😘`
     
     if (m.isGroup) {
