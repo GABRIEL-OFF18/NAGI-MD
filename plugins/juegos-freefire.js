@@ -109,7 +109,7 @@ extraLines.length ? `┃ ✦ Datos extra:` : '',
 `┃`,
 `╰━━━━━━━━━━━━━━⬣`,
 `⌚ Fecha: ${fechaLocal}`,
-`🔥 「 Itsuki Nakano-FF 」 🔥`
+`🔥 「 Nilou Ai-FF 」 🔥`
   ].filter(Boolean).join('\n')
 
   try {
