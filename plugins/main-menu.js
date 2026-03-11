@@ -32,7 +32,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 `
 
     const categories = {
-  'NAKANO-INFO': ['main', 'info'],
+  'NILOU-INFO': ['main', 'info'],
   'INTELIGENCIA': ['bots', 'ia'],
   'JUEGOS': ['game', 'gacha'],
   'ECONOMÍA': ['economy', 'rpgnk'],
@@ -43,7 +43,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
   'BÚSQUEDA': ['search', 'buscador'],
   'NK-PREM': ['fun', 'premium', 'social', 'custom'],
   'SUB-BOT': ['serbot'],
-  'NK-OWNER': ['owner', 'creador'],
+  'NL-OWNER': ['owner', 'creador'],
 }
 
     for (let catName in categories) {
@@ -60,9 +60,9 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       }
     }
 
-    menuText += `> *‐ ダ mᥲძᥱ ᑲᥡ ʟᴇᴏ*`
+    menuText += `> *‐ ダ mᥲძᥱ ᑲᥡ IAM | GABXZ*`
 
-    await conn.sendMessage(m.chat, { react: { text: '❄️', key: m.key } })
+    await conn.sendMessage(m.chat, { react: { text: '💫', key: m.key } })
 
     const localImagePath = join(process.cwd(), 'src', 'menu.jpg')
 
@@ -114,7 +114,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
   } catch (e) {
     console.error('❌ Error en el menú:', e)
     await conn.sendMessage(m.chat, {
-      text: `🍙 *ITSUNI MENÚ BÁSICO*\n\n• ${_p}menu - Menú principal\n• ${_p}ping - Estado del bot\n• ${_p}prefijos - Ver prefijos\n\n⚠️ *Error:* ${e.message}`
+      text: `🍙 *NILOU MENÚ BÁSICO*\n\n• ${_p}menu - Menú principal\n• ${_p}ping - Estado del bot\n• ${_p}prefijos - Ver prefijos\n\n⚠️ *Error:* ${e.message}`
     }, { quoted: m })
   }
 }
@@ -126,7 +126,7 @@ async function makeFkontak() {
     const thumb2 = Buffer.from(await res.arrayBuffer())
     return {
       key: { participants: '0@s.whatsapp.net', remoteJid: 'status@broadcast', fromMe: false, id: 'Halo' },
-      message: { locationMessage: { name: '☃️ 𝗠𝗲𝗻𝘂 𝗔𝗰𝘁𝘂𝗮𝗹𝗶𝘇𝗮𝗱𝗼 🧋', jpegThumbnail: thumb2 } },
+      message: { locationMessage: { name: '💫 𝗠𝗲𝗻𝘂 𝗔𝗰𝘁𝘂𝗮𝗹𝗶𝘇𝗮𝗱𝗼 🧋', jpegThumbnail: thumb2 } },
       participant: '0@s.whatsapp.net'
     }
   } catch {
@@ -145,6 +145,6 @@ async function getUptime() {
 
 handler.help = ['menu','help']
 handler.tags = ['main']
-handler.command = ['itsuki', 'menu', 'help']
+handler.command = ['nilou', 'menu', 'help']
 
 export default handler
