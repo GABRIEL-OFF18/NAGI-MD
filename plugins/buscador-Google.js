@@ -242,5 +242,6 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 handler.help = ['gweb']
 handler.tags = ['buscador']
 handler.command = /^(gweb|google|ghybrid|websearch)$/i
+handler.register = true
 
 export default handler
