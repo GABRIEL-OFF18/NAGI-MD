@@ -17,7 +17,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
 │ ${usedPrefix + command} One Piece
 ╰━━━━━━━━━━━━━━━━━━━━━━⬣
 
-💮 *Itsuki espera tu búsqueda...* 📚`, 
+💮 *Nilou espera tu búsqueda...* 📚`, 
     m, ctxWarn)
   }
 
@@ -37,7 +37,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
 │ 🕒 Intenta nuevamente más tarde
 ╰━━━━━━━━━━━━━━━━━━━━━━⬣
 
-💮 *Itsuki lamenta el inconveniente...* (´；ω；\`)`, 
+💮 *Nilou lamenta el inconveniente...* (´；ω；\`)`, 
       m, ctxErr)
     }
 
@@ -53,7 +53,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
 │ 📚 No se encontró en base de datos
 ╰━━━━━━━━━━━━━━━━━━━━━━⬣
 
-💮 *Itsuki sugiere verificar el nombre...* 📖`, 
+💮 *Nilou sugiere verificar el nombre...* 📖`, 
       m, ctxErr)
     }
 
@@ -109,7 +109,7 @@ ${synopsis ? synopsis.substring(0, 400) + (synopsis.length > 400 ? '...' : '') :
 │ 📝 Detalles: ${error.message}
 ╰━━━━━━━━━━━━━━━━━━━━━━⬣
 
-💮 *Itsuki no pudo completar la búsqueda...* (´；ω；\`)`, 
+💮 *Nilou no pudo completar la búsqueda...* (´；ω；\`)`, 
     m, ctxErr)
   }
 }
