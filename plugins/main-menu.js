@@ -70,15 +70,15 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       {
         name: 'cta_url',
         buttonParamsJson: JSON.stringify({ 
-          display_text: '☃️ ᴄᴀɴᴀʟ ᴏғɪᴄɪᴀʟ', 
-          url: 'https://whatsapp.com/channel/0029VbBvZH5LNSa4ovSSbQ2N' 
+          display_text: '💫 ᴄᴀɴᴀʟ ᴏғɪᴄɪᴀʟ', 
+          url: 'https://whatsapp.com/channel/0029VbCJFHmFy72CvfvzSR0Q' 
         })
       },
       {
         name: 'cta_url',
         buttonParamsJson: JSON.stringify({ 
-          display_text: '💻 ʜᴏsᴛɪɴɢ-ᴏғɪᴄɪᴀʟ', 
-          url: 'https://dash.quintillisas.com' 
+          display_text: '💻 DOWNLOAD WEB', 
+          url: 'https://gabriel-downloader.vercel.app/' 
         })
       }
     ]
