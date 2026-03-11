@@ -4,7 +4,7 @@ let handler = async (m, { conn }) => {
   try {
     await conn.sendMessage(m.chat, { react: { text: '👑', key: m.key } })
 
-    const menuText = `> *@Hola Soy Leo Creador De Itsuki Nakano La Bot Que Estas Usando*\n\n> sᴇʟᴇᴄɪᴏɴᴀ ᴜɴ ᴍᴇᴛᴏᴅᴏ ᴘᴀʀᴀ ᴄᴏᴍᴜɴɪᴄᴀʀᴛᴇ ᴄᴏɴᴍɪɢᴏ 🧃:`
+    const menuText = `> *@𓆩Hola Soy 𝗀𝖺𝖻𝗑𝗓 𝖢𝗋𝖾𝖺𝖽𝗈𝗋 De 𝖭𝗂𝗅𝗈𝗎 La Bot Que Estas Usando*\n\n> sᴇʟᴇᴄɪᴏɴᴀ ᴜɴ ᴍᴇᴛᴏᴅᴏ ᴘᴀʀᴀ ᴄᴏᴍᴜɴɪᴄᴀʀᴛᴇ ᴄᴏɴᴍɪɢᴏ𓆪 :`
 
     const imageUrl = 'https://cdn.russellxz.click/892b3d23.jpg'
 
@@ -13,20 +13,20 @@ let handler = async (m, { conn }) => {
         name: 'cta_url',
         buttonParamsJson: JSON.stringify({ 
           display_text: '𝙄𝙣𝙨𝙩𝙖𝙜𝙧𝙖𝙢 📸', 
-          url: 'https://www.instagram.com/naayz01s' 
+          url: 'https://www.instagram.com/𝗀𝖺𝖻𝗋𝗂𝖾𝗅' 
         })
       },
       {
         name: 'cta_url',
         buttonParamsJson: JSON.stringify({ 
           display_text: '𝙊𝙬𝙣𝙚𝙧 👑', 
-          url: 'https://wa.me/573187418668' 
+          url: 'https://wa.me/𝟧𝟣𝟫𝟦𝟣𝟨𝟧𝟪𝟣𝟫𝟤' 
         })
       },
       {
         name: 'cta_url',
         buttonParamsJson: JSON.stringify({ 
-          display_text: '𝘿𝙤𝙣𝙖𝙘𝙞𝙤𝙣𝙘𝙞𝙩𝙖 ❤️‍🩹', 
+          display_text: '𝗧𝗜𝗞𝗧𝗢𝗞 ❤️‍🩹', 
           url: 'https://paypal.me/Erenxs01' 
         })
       }
