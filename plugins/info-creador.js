@@ -20,7 +20,7 @@ let handler = async (m, { conn }) => {
         name: 'cta_url',
         buttonParamsJson: JSON.stringify({ 
           display_text: '𝙊𝙬𝙣𝙚𝙧 👑', 
-          url: 'https://wa.me/𝟧𝟣𝟫𝟦𝟣𝟨𝟧𝟪𝟣𝟫𝟤' 
+          url: 'https://wa.me/59175850453' 
         })
       },
       {
