@@ -33,7 +33,7 @@ global.nombre = m.pushName || 'User-MD'
 global.packsticker = ``
 
 global.iconos = [
-  'https://cdn.russellxz.click/a015cecd.jpg',
+  'https://iili.io/qY3xHen.jpg',
   'https://cdn.russellxz.click/d112a400.jpg',
   'https://cdn.russellxz.click/40fb346f.jpg',
   'https://cdn.russellxz.click/d8cefbd9.jpg',
