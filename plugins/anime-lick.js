@@ -14,7 +14,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 
     let str = m.mentionedJid.length > 0 || m.quoted 
         ? `🎤💙 \`${name2}\` le dio un lamidita juguetona a \`${name || who}\` en el concierto virtual ✨😋🎵` 
-        : `🎤💙 \`${name2}\` está siendo travieso/a en el mundo virtual de Itsuki Nakano ✨😋💫`
+        : `🎤💙 \`${name2}\` está siendo travieso/a en el mundo virtual de Nilou ai ✨😋💫`
     
     if (m.isGroup) {
         let pp = 'https://raw.githubusercontent.com/Brauliovh3/HATSUNE-MIKU/main/Contenido/1745789757512.mp4'
