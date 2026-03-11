@@ -38,10 +38,10 @@ function isNumber(x) {
 // Arrays para eventos aleatorios - MÁS OPCIONES
 const cofres = [
   "> `🌸 Has encontrado un cofre antiguo decorado con flores de cerezo.`",
-  "> `🎀 Descubriste un cofre mágico de Itsuki Nakano lleno de tesoros.`",
+  "> `🎀 Descubriste un cofre mágico de Nilou Ai lleno de tesoros.`",
   "> `📚 Te topaste con un cofre de estudio con monedas para libros.`",
   "> `🍱 Encontraste un cofre de bento especial con recompensas.`",
-  "> `✨ Un cofre brillante apareció con regalos de Itsuki.`",
+  "> `✨ Un cofre brillante apareció con regalos de Nilou.`",
   "> `🎓 Cofre académico con premios por excelencia estudiantil.`",
   "> `🏮 Cofre tradicional con monedas del festival escolar.`",
   "> `📖 Cofre literario con recompensas de sabiduría.`"
