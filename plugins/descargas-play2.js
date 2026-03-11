@@ -45,7 +45,7 @@ let handler = async (m, { conn, text, usedPrefix }) => {
       `> \`• ${usedPrefix}play2 spy x family opening\`\n\n` +
       `> \`🎯 Formato:\`\n` +
       `> \`🎥 Video MP4 de alta calidad\`\n\n` +
-      `> \`📚 "¡Disfruta tus videos con Itsuki Nakano!"\` ✨`,
+      `> \`📚 "¡Disfruta tus videos con Nilou AI!"\` ✨`,
       m, ctxWarn
     )    
   }    
