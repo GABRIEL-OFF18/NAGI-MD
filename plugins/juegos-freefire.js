@@ -97,7 +97,7 @@ let handler = async (m, { text, args, usedPrefix, command, conn }) => {
   }
 
   const caption = [
-`╭━━━〔 🌸 *ITSUKI NAKANO - FF UID* 🌸 〕━━━⬣`,
+`╭━━━〔 🌸 *NILOU AI - FF UID* 🌸 〕━━━⬣`,
 `┃`,
 `┃ 👤 Usuario: ${f.name || 'Desconocido'}`,
 `┃ 🆔 UID: ${f.uid || uid}`,
