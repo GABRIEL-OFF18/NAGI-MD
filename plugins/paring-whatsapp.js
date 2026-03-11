@@ -213,7 +213,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
             try { await conn.sendMessage(m.chat, { react: { text: '✅️', key: m.key } }) } catch {}
 
             // Imagen URL
-            const imageUrl = 'https://cdn.russellxz.click/73109d7e.jpg'
+            const imageUrl
+='https://iili.io/qY3xHen.jpg'
             // note: prepareWAMessageMedia uses the main connection's upload function.
             // If main conn is offline, upload may fail; we try/catch to avoid breaking subbot lifecycle.
             let media
