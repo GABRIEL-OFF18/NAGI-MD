@@ -89,7 +89,7 @@ users.forEach((v, index) => {
     const name = v.user.name || 'itsuki-sub'
     const uptime = v.uptime ? dhms(Date.now() - v.uptime) : "0s"
 
-    botList += `🌷 *Itsuki-V3 Sub*  *[ ${index + 1} ]*\n\n`
+    botList += `🌷 *Nilou-v2 Sub*  *[ ${index + 1} ]*\n\n`
     botList += `🌱 *Tag :* +${jid}\n`
     botList += `🆔️ *ID :* wa.me/${jid}?text=.menu\n`
     botList += `🤖 *Bot :* Itsuki-V3 Sub\n`
@@ -115,7 +115,7 @@ if (totalUsers > 0) {
             const name = v.user.name || 'itsuki-sub'
             const uptime = v.uptime ? dhms(Date.now() - v.uptime) : "0s"
 
-            cap += `🌷 *Itsuki-V3 Sub*  *[ ${index + 1} ]*\n`
+            cap += `🌷 *Nilou-V2 Sub*  *[ ${index + 1} ]*\n`
             cap += `🌱 Tag : +${jid}\n`
             cap += `🆔️ ID : wa.me/${jid}?text=.menu\n`
             cap += `🤖 Bot : Itsuki-V3 Sub\n`
@@ -146,7 +146,7 @@ const nativeButtons = [
     name: 'cta_url',
     buttonParamsJson: JSON.stringify({ 
       display_text: '𝗖𝗔𝗡𝗔𝗟 𝗢𝗙𝗜𝗖𝗜𝗔𝗟 🌸', 
-      url: 'https://whatsapp.com/channel/0029VbBvZH5LNSa4ovSSbQ2N' 
+      url: 'https://whatsapp.com/channel/0029VbCJFHmFy72CvfvzSR0Q' 
     })
   }
 ]
