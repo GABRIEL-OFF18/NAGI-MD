@@ -27,7 +27,7 @@ let handler = async (m, { conn }) => {
         name: 'cta_url',
         buttonParamsJson: JSON.stringify({ 
           display_text: '𝗧𝗜𝗞𝗧𝗢𝗞 ❤️‍🩹', 
-          url: 'https://paypal.me/Erenxs01' 
+          url: 'https://www.tiktok.com/@daniel_hs6?_r=1&_t=ZS-94bsj6TKMXF' 
         })
       }
     ]
