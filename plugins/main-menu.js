@@ -64,7 +64,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 
     await conn.sendMessage(m.chat, { react: { text: '💫', key: m.key } })
 
-    const localImagePath = join(process.cwd(), 'src', 'menu.jpg')
+    const localImagePath = join(process.cwd(), 'src', 'menu2.jpg')
 
     const nativeButtons = [
       {
