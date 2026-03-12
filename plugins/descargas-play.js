@@ -54,8 +54,8 @@ const handler = async (m, { conn, text }) => {
 ⏳ Duración   : ${durationTimestamp}
 🌐 Enlace     : ${url}
 
-✧━───『 𝑺𝒉𝒂𝒅𝒐𝒘 𝑩𝒐𝒕 』───━✧
-⚡ Powered by Yosue ⚡
+✧━───『 NILOU-AI』───━✧
+⚡ POWERED BY NILOU-STAFF⚡
 `
 
     const thumb = (await conn.getFile(thumbnail)).data
